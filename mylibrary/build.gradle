@@ -1,0 +1,102 @@
+plugins {
+    id 'com.android.library'
+    id 'com.github.dcendents.android-maven'
+    id 'kotlin-android'
+    id 'com.jfrog.bintray'
+    id 'com.getkeepsafe.dexcount'
+    id 'com.jaredsburrows.license'
+}
+
+
+licenseReport {
+    generateHtmlReport = false
+    generateJsonReport = true
+
+    // These options are ignored for Java projects
+    copyHtmlReportToAssets = false
+    copyJsonReportToAssets = true
+}
+
+repositories {
+    google()
+    mavenLocal()
+    maven { url "https://dl.bintray.com/voxeet/maven" }
+    jcenter()
+}
+
+
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+    buildToolsVersion rootProject.ext.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName rootProject.ext.voxeetSdkToolkitVersion
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+
+        debug {
+            buildConfigField "String", "Container", '"attach-basicqa/"'
+        }
+
+        release {
+            minifyEnabled false
+            buildConfigField "String", "Container", '"attach-basicprod/"'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+group = project.properties["VOXEET_MAVEN_PUBLISHED_GROUPID"]
+version = rootProject.ext.voxeetSdkToolkitVersion
+
+bintray {
+    user = project.properties["VOXEET_DEVELOPER_ID"]
+    key = project.properties["BINTRAY_API_KEY"]
+    configurations = ['archives'] //When uploading configuration files
+    pkg {
+        userOrg = project.properties["VOXEET_MAIN_DEVELOPER_ID"]
+        repo = "maven" // project.properties["VOXEET_MAVEN_PUBLISHED_GROUPID"]
+        name = project.properties["VOXEET_MAVEN_PUBLISHED_GROUPID"]
+        publicDownloadNumbers = true
+        publish = true
+    }
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation "com.android.support:support-compat:${rootProject.ext.supportLibVersion}"
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.supportLibVersion}"
+    implementation "com.android.support:recyclerview-v7:${rootProject.ext.supportLibVersion}"
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
+    compile("com.voxeet.sdk:sdk:${rootProject.ext.voxeetSdkVersion}") { transitive = true }
+    implementation 'com.android.support:multidex:1.0.3'
+
+    implementation 'com.microsoft.azure.android:azure-storage-android:0.8.0@aar'
+
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

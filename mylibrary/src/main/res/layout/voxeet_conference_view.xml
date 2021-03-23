@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="right|top">
+
+
+    <TextView
+        android:id="@+id/conference_state"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:alpha="0.2"
+        android:gravity="center_horizontal"
+        android:text="@string/voxeet_call"
+        android:textColor="@color/white"
+        android:textSize="@dimen/voxeet_conference_state_expanded"
+        android:textStyle="bold" />
+
+    <!-- VideoView used to display incoming video streams -->
+    <!-- possible scaleType := scale_fill, scale_fit, balanced -->
+    <com.voxeet.sdk.views.VideoView
+        android:id="@+id/selected_video_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:cornerRadius="@dimen/voxeet_overlay_minized_corner"
+        app:streamScaleType="scale_fill" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- in minimized mode, show the timer -->
+        <LinearLayout
+            android:id="@+id/layout_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="5dp">
+
+            <com.voxeet.uxkit.implementation.VoxeetTimer
+                android:id="@+id/voxeet_timer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/conference_view_avatar_size"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <!-- this view will automatically fill the proper height -->
+                <com.voxeet.uxkit.views.NotchAvoidView
+                    android:id="@+id/notch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:below_system_bar="true" />
+
+                <LinearLayout
+                    android:id="@+id/layout_participant"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:minHeight="@dimen/conference_view_avatar_size"
+                    android:orientation="horizontal"
+                    android:visibility="visible">
+
+                    <!-- dummy view representing the toggle/close -->
+                    <View
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="30dp"
+                        android:layout_marginTop="6dp"
+                        android:layout_marginRight="20dp" />
+
+                    <com.voxeet.uxkit.implementation.VoxeetParticipantsView
+                        android:id="@+id/participant_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="top"
+                        android:visibility="visible" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- display the current speaker -->
+            <com.voxeet.uxkit.implementation.VoxeetSpeakerView
+                android:id="@+id/current_speaker_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_margin="10dp" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical">
+
+        <!-- local user's video stream -->
+
+        <com.voxeet.sdk.views.VideoView
+            android:id="@+id/self_video_view"
+            android:layout_width="@dimen/conference_view_self_videoview_width"
+            android:layout_height="@dimen/conference_view_self_videoview_height"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="32dp"
+            app:cornerRadius="5dp"
+            app:streamScaleType="scale_fit"
+            app:showFlip="true" />
+
+        <!-- call action buttons -->
+        <com.voxeet.uxkit.implementation.VoxeetActionBarView
+            android:id="@+id/conference_bar_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="36dp"
+            android:visibility="gone"
+            app:record_button="false" />
+    </LinearLayout>
+
+    <com.voxeet.uxkit.implementation.VoxeetVideoStreamView
+        android:id="@+id/videoStream"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+</FrameLayout>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.voxeet.sdk:video:2.4.3@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9825bdcfb21f9a0e420ae4abd9eef8db/jetified-video-2.4.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9825bdcfb21f9a0e420ae4abd9eef8db/jetified-video-2.4.3/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9825bdcfb21f9a0e420ae4abd9eef8db/jetified-video-2.4.3/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.voxeet.sdk/video/2.4.3/929f4fd0272cf2811c2a0ece9f48a708937e4ca7/video-2.4.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

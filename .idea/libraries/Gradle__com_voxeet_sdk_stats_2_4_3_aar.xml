@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.voxeet.sdk:stats:2.4.3@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d3b3c182f5cfe5e4811bbbfa901a6b0e/jetified-stats-2.4.3/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d3b3c182f5cfe5e4811bbbfa901a6b0e/jetified-stats-2.4.3/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d3b3c182f5cfe5e4811bbbfa901a6b0e/jetified-stats-2.4.3/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.voxeet.sdk/stats/2.4.3/2ca89cbfa8f62ef0fde0bf8cd1888cc4897b162a/stats-2.4.3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES />
+  </library>
+</component>

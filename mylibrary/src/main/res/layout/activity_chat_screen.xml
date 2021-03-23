@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_chat"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#e9f2f9">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:id="@+id/toollay"
+    android:layout_height="40dp">
+    <ImageView
+        android:layout_width="35dp"
+        android:src="@drawable/black_arrow"
+        android:padding="10dp"
+        android:id="@+id/back_img"
+        android:tint="@color/black"
+        android:rotation="180"
+        android:layout_height="match_parent"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:text="Chat"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
+    <View
+        android:background="#b3d1e5"
+        android:layout_below="@+id/toollay"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/toollay"
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/layout_send"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_message"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/activity_layout"
+            android:layout_marginTop="5dp"
+            android:scrollbars="none" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/layout_send"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/background_txt_send"
+        >
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/bottom_layout2"
+            android:gravity="center_vertical"
+            android:layout_centerVertical="true"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/attachment"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/attachment" />
+
+            <View
+                android:id="@+id/line"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/txt_send"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@+id/attachment"
+                android:background="@color/greyf1" />
+
+            <EditText
+                android:id="@+id/txt_send"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="5dp"
+                android:layout_toLeftOf="@+id/line2"
+                android:layout_toRightOf="@+id/line"
+                android:background="@android:color/transparent"
+                android:hint="Type a message..."
+                android:maxLines="4"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp" />
+
+            <View
+                android:id="@+id/line2"
+                android:layout_width="1dp"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/txt_send"
+                android:layout_alignParentRight="true"
+                android:background="@color/greyf1" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/bottom_layout2"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/btn_send"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_centerVertical="true"
+                android:padding="6dp"
+                android:src="@drawable/blue_send" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

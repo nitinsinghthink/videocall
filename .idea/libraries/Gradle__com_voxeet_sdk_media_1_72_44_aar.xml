@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: com.voxeet.sdk:media:1.72.44@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9346a920b63778ba877ff83d16802801/jetified-media-1.72.44/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9346a920b63778ba877ff83d16802801/jetified-media-1.72.44/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/9346a920b63778ba877ff83d16802801/jetified-media-1.72.44/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

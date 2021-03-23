@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="screen_preview_width">130dp</dimen>
+    <dimen name="screen_preview_height">100dp</dimen>
+    <dimen name="screen_preview_width_padding">129dp</dimen>
+    <dimen name="screen_preview_height_padding">99dp</dimen>
+
+    <dimen name="conference_view_width">100dp</dimen>
+    <dimen name="conference_view_height">140dp</dimen>
+
+    <dimen name="dimen_140">140dp</dimen>
+    <dimen name="dimen_100">100dp</dimen>
+    <dimen name="border_size">1dp</dimen>
+    <dimen name="cornerRadius">30dp</dimen>
+    <dimen name="dimen_512">384dp</dimen>
+    <dimen name="contact_profile_avatar_size_max">256dp</dimen>
+    <dimen name="contact_profile_avatar_size">128dp</dimen>
+    <dimen name="conference_view_avatar_size">64dp</dimen>
+    <dimen name="meeting_list_avatar_double">48dp</dimen>
+    <dimen name="meeting_list_avatar_vu_double">52dp</dimen>
+    <dimen name="meeting_list_username_width">64dp</dimen>
+    <dimen name="meeting_list_avatar_third">16dp</dimen>
+    <dimen name="dimen_3">3dp</dimen>
+    <dimen name="dimen_5">5dp</dimen>
+    <dimen name="dimen_0">0dp</dimen>
+    <dimen name="dimen_1">1dp</dimen>
+    <dimen name="voxeet_incoming_call_activity_padding">64dp</dimen>
+    <dimen name="voxeet_default_margin">16dp</dimen>
+    <dimen name="voxeet_incoming_call_username">16dp</dimen>
+    <dimen name="voxeet_conference_state_expanded">24dp</dimen>
+    <dimen name="voxeet_conference_state_minimized">12dp</dimen>
+    <dimen name="voxeet_conference_state">@dimen/voxeet_conference_state_expanded</dimen>
+
+    <dimen name="conference_view_self_videoview_width">100dp</dimen>
+    <dimen name="conference_view_self_videoview_height">120dp</dimen>
+    <dimen name="voxeet_overlay_minized_corner">10dp</dimen>
+    <dimen name="voxeet_overlay_margin">16dp</dimen>
+    <dimen name="conferencebar_view_item_height">40dp</dimen>
+    <dimen name="conferencebar_view_padding_left_right">6dp</dimen>
+</resources>

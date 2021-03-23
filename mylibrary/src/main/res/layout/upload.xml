@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#10000000"
+    android:padding="7dp">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:weightSum="2"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="@drawable/rounded_corners">
+
+        <TextView
+            android:id="@+id/gallery"
+            android:background="@drawable/underline"
+            android:textColor="@color/blue"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:text="Upload Image"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0sp" />
+
+        <TextView
+            android:id="@+id/document"
+            android:textColor="@color/blue"
+            android:gravity="center"
+            android:textSize="14sp"
+            android:text="Upload Doc"
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="0sp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:textStyle="bold"
+        android:id="@+id/tv_cancel"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/rounded_corners"
+        android:text="Cancel"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/blue"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:layout_marginBottom="10dp"/>
+
+</LinearLayout>
