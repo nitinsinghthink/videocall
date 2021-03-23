@@ -7,7 +7,7 @@ import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
-import android.widget.Toast
+import androidx.annotation.NonNull
 import androidx.core.app.ActivityCompat
 import com.voxeet.promise.solve.ErrorPromise
 import com.voxeet.promise.solve.PromiseExec
@@ -18,6 +18,8 @@ import com.voxeet.sdk.push.center.management.EnforcedNotificationMode
 import com.voxeet.sdk.push.center.management.NotificationMode
 import com.voxeet.sdk.push.center.management.VersionFilter
 import com.voxeet.sdk.services.conference.information.ConferenceStatus
+import com.voxeet.think360.interfaces.ConferenceStateEvent
+import com.voxeet.think360.interfaces.CreateCallListener
 import com.voxeet.uxkit.activities.VoxeetAppCompatActivity
 import com.voxeet.uxkit.activities.notification.DefaultIncomingCallActivity
 import com.voxeet.uxkit.controllers.ConferenceToolkitController
@@ -30,12 +32,18 @@ import kotlin.system.exitProcess
 
 class CreateCall : VoxeetAppCompatActivity() {
 
+    private lateinit var events : ConferenceStatusUpdatedEvent
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_call)
     }
 
-    fun registerSDK(context: Context, activity : Activity, name :  String, ID : String) {
+
+    /**
+     * Register SDK
+     */
+    fun registerSDK(context: Context, activity : Activity) {
         try {
             if (ActivityCompat.checkSelfPermission(
                             context,
@@ -57,7 +65,6 @@ class CreateCall : VoxeetAppCompatActivity() {
                 )
             }
             VoxeetSDK.instance().register(context)
-            createCall(name, ID , "", context, activity)
         } catch (e: java.lang.NullPointerException) {
             e.printStackTrace()
         } catch (e: java.lang.Exception) {
@@ -109,32 +116,26 @@ class CreateCall : VoxeetAppCompatActivity() {
         )
     }
 
-
-    fun showToast(context: Context) {
-        Toast.makeText(context, "123 ", Toast.LENGTH_SHORT).show()
-    }
-
-
-    //Logon to Vox
-    fun createCall(
+    //Selected User to Connect
+    fun logSelectedUser(
             name: String,
             externalId: String,
             avatarUrl: String,
-            context: Context,
-            activity: Activity
+            action : CreateCallListener
     ) {
         VoxeetSDK.session().open(ParticipantInfo(name, externalId, avatarUrl))
-                .then<Any> { _, _ ->
-                    joinCall(context, activity)
+                .then<Any> { _, solver ->
+                    action.call(solver)
                 }
                 .error { error ->
                     error.printStackTrace()
-                    createCall(name, externalId, "", context, activity)
+                    action.failure(error.message!!)
                 }
     }
 
 
-    private fun joinCall(context: Context, activity: Activity) {
+    //Join  conference Call
+    fun joinCall(context: Context, activity: Activity, @NonNull conferenceAliasName : String) {
         if (ActivityCompat.checkSelfPermission(
                         context,
                         Manifest.permission.RECORD_AUDIO
@@ -146,13 +147,12 @@ class CreateCall : VoxeetAppCompatActivity() {
                     10
             )
         } else {
-            val conferenceAlias = "1234"
             VoxeetToolkit.getInstance().enable(
                     VoxeetToolkit.getInstance().conferenceToolkit
             )
             val service = VoxeetSDK.conference()
             val create =
-                    service.create(conferenceAlias)
+                    service.create(conferenceAliasName)
                             .then<Any> { result, solver ->
                                 try {
                                     val conferenceId =
@@ -194,14 +194,16 @@ class CreateCall : VoxeetAppCompatActivity() {
     }
 
 
+
+
+
     override fun onConferenceState(event: ConferenceStatusUpdatedEvent) {
         super.onConferenceState(event)
-        when (event.state) {
-            ConferenceStatus.LEFT -> {
-                finish()
-                exitProcess(0)
-            }
-        }
+        events = event
+    }
+
+    fun onConferenceState(action : ConferenceStateEvent) {
+        action.videoCallConferenceStateEvent(events)
     }
 
 
